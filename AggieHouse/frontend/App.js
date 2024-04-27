@@ -1,20 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import tw from 'twrnc';
+import { AntDesign } from '@expo/vector-icons';
+import { Input } from '@rneui/themed';
+import { Button } from '@rneui/base';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import ProfileTab from './components/ProfileTab';
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={tw`flex-1 bg-gray-100`}>
+      <ProfileTab />
+
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
