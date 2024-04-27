@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   profilePicture: {
     width: 100,
     height: 100,
-    backgroundColor: 'gray',
+    backgroundColor: 'rgba(149, 69, 53, 0.7)',
     justifyContent: 'center', // Center content vertically
     alignItems: 'center',
     borderRadius: 50,
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   editPictureText: {
     fontSize: 16,
-    color: '#007AFF', // Blue color
+    color: '#954535', 
     marginBottom: 20,
   },
   inputContainer: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   saveButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#954535',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 18,
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  //848484
 
 });
 
