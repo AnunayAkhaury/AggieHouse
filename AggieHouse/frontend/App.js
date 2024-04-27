@@ -7,10 +7,12 @@ import { Button } from '@rneui/base';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import ProfileTab from './components/ProfileTab';
+import Dashboard from './components/dashboard';
+import AdminDashboard from './components/dashboard';
 export default function App() {
   return (
     <View style={tw`flex-1 bg-gray-100`}>
-      <ProfileTab />
+      <Dashboard />
 
     </View>
   );
