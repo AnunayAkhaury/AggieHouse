@@ -11,6 +11,10 @@ import SignUp from './src/screens/SignUp';
 import ChatHeader from './src/components/ChatHeader';
 import ChatPage from './src/screens/ChatPage';
 import ChatRoom from './src/screens/ChatRoom';
+import CheckIn from './src/screens/CheckIn';
+import TasksPage from './src/screens/TasksPage';
+import ChatbotUI from './src/screens/ChatBotUI';
+import DashBoard from './src/screens/DashBoard';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +28,11 @@ export default function App() {
         <Stack.Screen  options={{ headerShown: false }}  name="SignUp" component={SignUp} />
         <Stack.Screen  options={{ headerShown: false }}  name="ChatPage" component={ChatPage} />
         <Stack.Screen  options={{ headerShown: false }}  name="ChatRoom" component={ChatRoom} />
+        <Stack.Screen  options={{ headerShown: false }}  name="CheckIn" component={CheckIn} />
+        <Stack.Screen  options={{ headerShown: false }}  name="TasksPage" component={TasksPage} />
+        <Stack.Screen  options={{ headerShown: false }}  name="ChatbotUI" component={ChatbotUI} />
+        <Stack.Screen  options={{ headerShown: false }}  name="DashBoard" component={DashBoard} />
+
 
        
       </Stack.Navigator>

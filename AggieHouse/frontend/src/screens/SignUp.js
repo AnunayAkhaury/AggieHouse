@@ -22,7 +22,7 @@ const Signup = () => {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredentials.user;
       console.log('Registered with:', user.email);
-      navigation.replace("Home");
+      navigation.replace("CheckIn");
       // Set additional user info in Firestore
       await setDoc(doc(db, "users", user.uid), {
         userName: userName,
