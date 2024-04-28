@@ -5,11 +5,12 @@ import CheckIn from './components/CheckIn.js';
 import Feedback from './components/Feedback.js';
 
 
+
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <EditProfilePage/>
-
+      <Feedback/>
     </View>
   );
 }

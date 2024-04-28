@@ -21,7 +21,7 @@ const EditProfilePage = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.editProfileText}>Edit Profile</Text>
+      <Text style={styles.editProfileText}>Your Profile</Text>
 
       <View style={styles.profilePicture}>
         <Icon name="user" size={60} color="#954535" />
