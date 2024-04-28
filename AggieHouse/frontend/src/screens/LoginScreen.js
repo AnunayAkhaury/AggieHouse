@@ -21,7 +21,7 @@ const LoginScreen = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigation.replace("ProfileTab");
+        navigation.replace("ChatPage");
       }
     });
     return () => unsubscribe(); // Corrected to ensure the unsubscribe function is properly returned for cleanup

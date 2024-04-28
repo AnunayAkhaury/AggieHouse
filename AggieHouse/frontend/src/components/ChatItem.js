@@ -6,7 +6,6 @@ const ChatItem = ({ item, noBorder, navigation }) => {
     console.log("ChatItem item:", item);
   return (
     <TouchableOpacity onPress={() => {
-        console.log("ChatItem ID:!!!!!!!!!!!!!", item.userId);
             navigation.navigate('ChatRoom', { chatId: item.userId }); // Make sure 'Login' is the correct screen name in your navigator
     }} // Add navigation logic here
         style={[
@@ -23,7 +22,7 @@ const ChatItem = ({ item, noBorder, navigation }) => {
                 <Text style={styles.name}>{item.userName}</Text>
                 <Text style={styles.time}>12:34 PM</Text> 
             </View>
-            <Text style={styles.lastMessage}>{item.email}</Text>
+            <Text style={styles.lastMessage}>hello how are you?</Text>
         </View>
     </TouchableOpacity>
   );
