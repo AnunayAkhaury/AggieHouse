@@ -28,8 +28,6 @@ const CheckIn = () => {
       // Calculate duration and set check out time
       setClockedDuration(formatDuration(newCurrentTime - checkInTime));
       setCheckOutTime(newCurrentTime);
-      
-      
     } else {
       // Set check in time
       setCheckInTime(newCurrentTime);
@@ -52,11 +50,11 @@ const CheckIn = () => {
     <View style={styles.container}>
       <Text style={styles.title}>
         Aggie <Text style={styles.darkBrownText}>GeoNest</Text>
-    </Text>
+      </Text>
       <View style={styles.imageContainer}>
         <Image
-          source={require('/Users/akshajjoshi/AJROOT/AggieHouse/AggieHouse/frontend/assets/WebP Image.png')} // Update the path to your image
-          style={styles.image}
+          source={require('/Users/akshajjoshi/AJROOT/AggieHouse/AggieHouse/frontend/assets/WebP Image.png')}
+          style={[styles.image, isCheckedIn && styles.checkedInImage]}
         />
       </View>
       <Text style={styles.heading}>Check In</Text>
@@ -80,18 +78,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgb(220, 204, 192)',
-    justifyContent: 'flex-start', // Align items at the top of the screen
+    justifyContent: 'flex-start', 
     alignItems: 'center',
-    paddingTop: 20, // Add padding to create space for the title
+    paddingTop: 20, 
   },
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    marginBottom: 40, // Add margin to create space between the title and other content
-    marginTop:80,
+    marginBottom: 40, 
+    marginTop: 80,
   },
   darkBrownText: {
-    color: '#954535', // Dark brown color code
+    color: '#954535', 
   },
   imageContainer: {
     marginBottom: 20,
@@ -101,13 +99,16 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   image: {
-    width: 200, // Increase the size of the image
-    height: 200, // Increase the size of the image
-    borderRadius: 100, // Keep the circle size the same
+    width: 200, 
+    height: 200, 
+    borderRadius: 100, 
     marginBottom: 20,
-    
+    borderWidth: 5,
+    borderColor: '#954535',
   },
-
+  checkedInImage: {
+    borderColor: 'green',
+  },
   heading: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -120,7 +121,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '80%',
   },
-
   buttonContainer: {
     alignItems: 'center',
   },
@@ -128,14 +128,13 @@ const styles = StyleSheet.create({
     width: 150,
     height: 50,
     borderRadius: 50,
-    backgroundColor: '#954535', // Brownish background color
+    backgroundColor: '#954535', 
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#954535',
     shadowOpacity: 0.5,
     shadowRadius: 45,
     elevation: 40,
-    
   },
   checkedInButton: {
     backgroundColor: 'green',
@@ -143,16 +142,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 20,
     elevation: 3,
-
   },
   checkedText: {
     marginTop: 10,
     fontSize: 16,
-    color: '#954535', // Default text color
+    color: '#954535', 
     textAlign: 'center',
   },
   checkedInText: {
-    color: 'green', // Text color when checked in
+    color: 'green', 
   },
 });
 
