@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Location from 'expo-location';
 
 const CheckIn = () => {
   const [isCheckedIn, setIsCheckedIn] = useState(false);
@@ -8,42 +9,74 @@ const CheckIn = () => {
   const [checkOutTime, setCheckOutTime] = useState(null);
   const [clockedDuration, setClockedDuration] = useState(null);
   const [clockedDate, setClockedDate] = useState(null);
+  const [isInProximity, setIsInProximity] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (isCheckedIn) {
-        // Update the duration every second while checked in
-        const newCurrentTime = Math.floor(new Date().getTime() / 1000); // Convert milliseconds to seconds
+        const newCurrentTime = Math.floor(new Date().getTime() / 1000);
         setClockedDuration(formatDuration(newCurrentTime - checkInTime));
       }
-    }, 1000); // Update every second
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [isCheckedIn, checkInTime]);
 
   const onCheckInOut = () => {
-    const newCurrentTime = Math.floor(new Date().getTime() / 1000); // Convert milliseconds to seconds
+    if (!isInProximity) return; // Only allow check-in or check-out when in proximity
 
+    const newCurrentTime = Math.floor(new Date().getTime() / 1000);
     if (isCheckedIn) {
-      // Calculate duration and set check out time
       setClockedDuration(formatDuration(newCurrentTime - checkInTime));
       setCheckOutTime(newCurrentTime);
+      setIsCheckedIn(false);
     } else {
-      // Set check in time
       setCheckInTime(newCurrentTime);
-      setClockedDuration(null); // Reset duration when checked in
-      setClockedDate(new Date().toDateString()); // Set clocked date when checked in
+      setClockedDuration(null);
+      setClockedDate(new Date().toDateString());
+      setIsCheckedIn(true);
     }
-
-    setIsCheckedIn(!isCheckedIn);
   };
 
   const formatDuration = (seconds) => {
-    // Convert seconds to hours, minutes, and remaining seconds
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = seconds % 60;
     return `${hours} hours, ${minutes} minutes, ${remainingSeconds} seconds`;
+  };
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        console.log("Location permission not granted");
+        return;
+      }
+
+      const locationSubscription = await Location.watchPositionAsync({
+        accuracy: Location.Accuracy.BestForNavigation,
+        timeInterval: 5000
+      }, (locationUpdate) => {
+        const { latitude, longitude } = locationUpdate.coords;
+        setIsInProximity(isCloseEnough(locationUpdate.coords, STATIC_LOCATION));
+      });
+
+      return () => {
+        locationSubscription && locationSubscription.remove();
+      };
+    })();
+  }, []);
+
+  const STATIC_LOCATION = {
+    latitude: 37.785834,
+    longitude: -122.406417
+  };
+
+  const isCloseEnough = (currentCoords, targetCoords, tolerance = 0.0001) => {
+    return (
+      Math.abs(currentCoords.latitude - targetCoords.latitude) < tolerance &&
+      Math.abs(currentCoords.longitude - targetCoords.longitude) < tolerance
+    );
   };
 
   return (
@@ -53,17 +86,21 @@ const CheckIn = () => {
       </Text>
       <View style={styles.imageContainer}>
         <Image
-          source={require('/Users/akshajjoshi/AJROOT/AggieHouse/AggieHouse/frontend/assets/WebP Image.png')}
+          source={require('/Users/sanjith/Personal/Development/VSCodeProjects/aggieHouse/AggieHouse/AggieHouse/frontend/assets/WebP Image.png')}
           style={[styles.image, isCheckedIn && styles.checkedInImage]}
         />
       </View>
-      <Text style={styles.heading}>Check In</Text>
+      <Text style={styles.heading}>Click Below</Text>
       <Text style={styles.subHeading}>
         Be sure to check in and check out when you enter and leave Aggie House!
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={onCheckInOut} style={[styles.checkInButton, isCheckedIn && styles.checkedInButton]}>
-          <Icon name="home" size={40} color="white" />
+        <TouchableOpacity
+          onPress={onCheckInOut}
+          style={[styles.checkInButton, isCheckedIn && styles.checkedInButton]}
+          disabled={!isInProximity} // Button is disabled when not in proximity
+        >
+          <Text style={{ fontWeight: 'bold', color: 'white' }}>{isCheckedIn ? 'Checked In' : 'Check In'}</Text>
         </TouchableOpacity>
         <Text style={[styles.checkedText, isCheckedIn && styles.checkedInText]}>
           {isCheckedIn ? `Checked In at ${new Date(checkInTime * 1000).toLocaleTimeString()} on ${clockedDate}` : checkOutTime ? `Checked Out at ${new Date(checkOutTime * 1000).toLocaleTimeString()} on ${new Date(checkOutTime * 1000).toDateString()}` : ""}
