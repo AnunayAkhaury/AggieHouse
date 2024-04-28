@@ -50,7 +50,9 @@ const CheckIn = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Aggie Geo Nest</Text>
+      <Text style={styles.title}>
+        Aggie <Text style={styles.darkBrownText}>GeoNest</Text>
+    </Text>
       <View style={styles.imageContainer}>
         <Image
           source={require('/Users/akshajjoshi/AJROOT/AggieHouse/AggieHouse/frontend/assets/WebP Image.png')} // Update the path to your image
@@ -87,6 +89,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 40, // Add margin to create space between the title and other content
     marginTop:80,
+  },
+  darkBrownText: {
+    color: '#954535', // Dark brown color code
   },
   imageContainer: {
     marginBottom: 20,
