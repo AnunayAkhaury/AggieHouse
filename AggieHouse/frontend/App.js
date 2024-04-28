@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import EditProfilePage from './components/EditProfilePage.js';
 import CheckIn from './components/CheckIn.js';
 import Feedback from './components/Feedback.js';
+import ResidentFeedbackForm from './components/ResidentFeedbackForm.js';
+
 
 
 
@@ -10,7 +12,8 @@ import Feedback from './components/Feedback.js';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Feedback/>
+      <ResidentFeedbackForm/>
+    
     </View>
   );
 }
