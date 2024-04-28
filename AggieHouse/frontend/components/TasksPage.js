@@ -29,9 +29,12 @@ const TasksPage = () => {
     setTasks(newTasks);
   };
 
+  const name = 'John Doe'; // Example user name
+  const currentDate = new Date().toLocaleDateString();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tasks</Text>
+      <Text style={styles.title}>Tasks for {name} on {currentDate}</Text>
       <FlatList
         data={tasks}
         renderItem={({ item, index }) => (
@@ -46,7 +49,7 @@ const TasksPage = () => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Write a task"
+          placeholder="Write a personal task"
           value={textInput}
           onChangeText={setTextInput}
         />
@@ -69,12 +72,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    marginTop: 20,
     color: 'rgb(84, 84, 84)',
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 100,
   },
   input: {
     flex: 1,

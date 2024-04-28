@@ -5,7 +5,7 @@ const StartPage = () => {
     return (
         <View style={styles.container}>
             <Image 
-                source={require("/Users/sanjith/Personal/Development/VSCodeProjects/aggieHouse/AggieHouse/AggieHouse/frontend/assets/Aggie House IMG.png")}
+                source={require("/Users/akshajjoshi/AJROOT/AggieHouse/AggieHouse/frontend/assets/Aggie House IMG.png")}
                 style={styles.image}/>
             <View style={styles.buttonsView}>
                 <TouchableOpacity onPress={onLoginClick} style={styles.button}>
