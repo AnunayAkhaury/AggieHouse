@@ -95,13 +95,10 @@ const CheckIn = () => {
         Be sure to check in and check out when you enter and leave Aggie House!
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={onCheckInOut}
-          style={[styles.checkInButton, isCheckedIn && styles.checkedInButton]}
-          disabled={!isInProximity} // Button is disabled when not in proximity
-        >
+        <TouchableOpacity onPress={onCheckInOut} style={[styles.checkInButton, isCheckedIn && styles.checkedInButton]}>
           <Text style={{ fontWeight: 'bold', color: 'white' }}>{isCheckedIn ? 'Checked In' : 'Check In'}</Text>
         </TouchableOpacity>
+        
         <Text style={[styles.checkedText, isCheckedIn && styles.checkedInText]}>
           {isCheckedIn ? `Checked In at ${new Date(checkInTime * 1000).toLocaleTimeString()} on ${clockedDate}` : checkOutTime ? `Checked Out at ${new Date(checkOutTime * 1000).toLocaleTimeString()} on ${new Date(checkOutTime * 1000).toDateString()}` : ""}
         </Text>
