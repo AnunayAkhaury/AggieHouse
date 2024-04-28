@@ -75,9 +75,9 @@ const ChatbotUI = ({ navigation }) => {
  return (
    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
      <View style={styles.header}>
-       <TouchableOpacity activeOpacity={0.7} style={styles.backButton}>
-         <AntDesign name="arrowleft" size={24} color="black" />
-       </TouchableOpacity>
+     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
        <Text style={styles.headerText}>Gunrock AI</Text>
      </View>
      <ScrollView style={styles.messagesContainer}>

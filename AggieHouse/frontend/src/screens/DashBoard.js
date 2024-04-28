@@ -86,14 +86,11 @@ const AdminDashboard = ({navigation}) => {
 
   return (
     <View style={tw`flex-1 bg-gray-100`}>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-            <AntDesign name="arrowleft" size={24} color="black" />
-          </TouchableOpacity>
       <StatusBar style="auto" />
       <SafeAreaView style={tw`flex-1 relative`}>
         <Image source={house} style={tw`absolute top-0 w-full h-33 opacity-60`} />
         <View style={tw`w-full px-3`}>
-          <TouchableOpacity onPress={() => {/* Implement navigation back function here */}} activeOpacity={0.7} style={tw`h-[3rem] w-[3rem] bg-gray-200 rounded-full items-center justify-center mt-4`}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <AntDesign name="arrowleft" size={24} color="black" />
           </TouchableOpacity>
           <Text style={tw`text-[1.5rem] font-medium text-center mt-8`}>Admin Dashboard</Text>
