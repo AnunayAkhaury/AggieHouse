@@ -5,26 +5,37 @@ import { AntDesign } from '@expo/vector-icons';
 import { Input, Button } from '@rneui/base';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/core';
+import { doc, setDoc, getFirestore } from 'firebase/firestore';
 import house from '../../../frontend/assets/images/house.jpeg';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
+  const [userName, setuserName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const auth = getAuth();
+  const db = getFirestore(); // Ensure you initialize Firestore correctly
   const navigation = useNavigation();
 
-  const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('Registered with:', user.email);
-        navigation.replace("Home"); // Navigate to the Home screen after signup
-      })
-      .catch(error => {
-        console.error('Signup Error:', error);
-        alert(error.message);
+  const handleSignUp = async () => {
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredentials.user;
+      console.log('Registered with:', user.email);
+      navigation.replace("Home");
+      // Set additional user info in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        userName: userName,
+        email: email,
+        phoneNumber: phoneNumber,
+        userId: user.uid
       });
+
+      // Navigate to the Home screen after signup
+    } catch (error) {
+      console.error('Signup Error:', error);
+      alert(error.message);
+    }
   };
 
   return (
@@ -47,6 +58,16 @@ const Signup = () => {
           <Text style={tw`text-xl text-gray-700 text-center`}>
             Make your account
           </Text>
+
+          <Input
+            value={userName}
+            onChangeText={setuserName}
+            containerStyle={tw`w-full mt-4`}
+            inputContainerStyle={tw`py-2`}
+            placeholder="userName"
+            keyboardType='user name'
+            autoCapitalize="none"
+          />
 
           <Input
             value={email}

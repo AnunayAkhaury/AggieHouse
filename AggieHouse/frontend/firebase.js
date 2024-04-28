@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, initializeAuth, getReactNativePersistance } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {getFirestore, collection} from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,11 +15,16 @@ const firebaseConfig = {
   storageBucket: "aggiehouse-c762e.appspot.com",
   messagingSenderId: "430914749219",
   appId: "1:430914749219:web:a3f03f8ea7d9373a914296",
-  measurementId: "G-79P9KGN5HR"
+  measurementId: "G-79P9KGN5HR",
+  databaseURL: "https://aggiehouse-c762e-default-rtdb.firebaseio.com",
 };
 
-// Initialize Firebase
+// Initialize Firebas
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const database = getDatabase(app);
 
-export { app, auth }; 
+export const db = getFirestore(app);
+export const usersRef = collection(db, "users");
+export const roomRef = collection(db, "rooms");
+export { app, auth, database }; 
