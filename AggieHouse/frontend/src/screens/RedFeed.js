@@ -2,9 +2,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Modal } from 'react-native';
 import feedback from '../../../frontend/assets/images/feedback.png'
+import { AntDesign } from '@expo/vector-icons';
 
 
-const RedFeed = () => {
+
+
+
+
+
+const RedFeed = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(null);
@@ -17,6 +23,9 @@ const RedFeed = () => {
 
   return (
     <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <Modal
         animationType="slide"
         transparent={true}
@@ -196,6 +205,17 @@ centeredView: {
     textAlign: 'center',
     marginTop: 20,
   },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+  }
 
   
 });

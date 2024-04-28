@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { AntDesign } from '@expo/vector-icons';
 
-const EditProfile = () => {
+const EditProfile = ({navigation}) => {
   const [profileData, setProfileData] = useState({
     name: '',
     pronouns: '',
@@ -21,6 +22,9 @@ const EditProfile = () => {
 
   return (
     <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <Text style={styles.editProfileText}>Your Profile</Text>
 
       <View style={styles.profilePicture}>
@@ -132,6 +136,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+  }
 });
 
 export default EditProfile;

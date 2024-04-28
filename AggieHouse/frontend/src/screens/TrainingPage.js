@@ -1,8 +1,9 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
+import { AntDesign } from '@expo/vector-icons';
 
-const TrainingPage = () => {
+const TrainingPage = ({navigation}) => {
   const faqs = [
     {
       question: 'There is a late resident who has not informed a Board member where they are or when they will return, what should I do?',
@@ -19,6 +20,9 @@ const TrainingPage = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <Text style={styles.header}>Aggie House Volunteer Training</Text>
       
       {/* Training Content */}
@@ -106,6 +110,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 10,
   },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+  }
 });
 
 export default TrainingPage;

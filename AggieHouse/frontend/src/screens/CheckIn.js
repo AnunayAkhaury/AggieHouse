@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Location from 'expo-location';
+import { AntDesign } from '@expo/vector-icons';
 
-const CheckIn = () => {
+const CheckIn = ({navigation}) => {
   const [isCheckedIn, setIsCheckedIn] = useState(false);
   const [checkInTime, setCheckInTime] = useState(null);
   const [checkOutTime, setCheckOutTime] = useState(null);
@@ -81,6 +82,9 @@ const CheckIn = () => {
 
   return (
     <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <Text style={styles.title}>
         Aggie <Text style={styles.darkBrownText}>GeoNest</Text>
       </Text>
@@ -185,7 +189,17 @@ const styles = StyleSheet.create({
   },
   checkedInText: {
     color: 'green', 
-  },
+  }, backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+  }
 });
 
 export default CheckIn;

@@ -9,7 +9,7 @@ import { API_KEY } from '@env';
 
 const standardizeText = text => text.toLowerCase().replace(/[^\w\s]/g, '');
 
-const ChatbotUI = () => {
+const ChatbotUI = ({navigation}) => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
     { role: 'bot', content: 'Hi! I am Gunrock, your personal Aggie House Assistant. How can I help you today?' }
@@ -69,9 +69,9 @@ const ChatbotUI = () => {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity activeOpacity={0.7} style={styles.backButton}>
-          <AntDesign name="arrowleft" size={24} color="black" />
-        </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
         <Text style={styles.headerText}>Gunrock AI</Text>
       </View>
       <ScrollView style={styles.messagesContainer}>
@@ -110,10 +110,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#954535',
   },
   backButton: {
-    position: 'absolute',
-    left: 10,
-    top: 70,
-    zIndex: 10,
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
   },
   headerText: {
     marginTop: 45,
@@ -163,6 +168,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20
   },
+  
 });
 
 export default ChatbotUI;

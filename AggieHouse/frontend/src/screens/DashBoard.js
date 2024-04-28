@@ -52,7 +52,7 @@ const fetchVolunteerHoursMock = (volunteerName) => {
   });
 };
 
-const AdminDashboard = () => {
+const AdminDashboard = ({navigation}) => {
   const [hoursData, setHoursData] = useState([]);
   const [weeklyHoursData, setWeeklyHoursData] = useState([]);
   const [selectedVolunteer, setSelectedVolunteer] = useState('Virginia');
@@ -86,6 +86,9 @@ const AdminDashboard = () => {
 
   return (
     <View style={tw`flex-1 bg-gray-100`}>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <StatusBar style="auto" />
       <SafeAreaView style={tw`flex-1 relative`}>
         <Image source={house} style={tw`absolute top-0 w-full h-33 opacity-60`} />
@@ -173,6 +176,17 @@ const styles = StyleSheet.create({
   pickerItem: {
     height: 50, // Adjust this height to fit your design
   },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+  }
 });
 
 export default AdminDashboard;

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Modal, ScrollView } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
-const ShiftLog = () => {
+const ShiftLog = ({navigation}) => {
   const [name, setName] = useState('');
   const [coVolunteerName, setCoVolunteerName] = useState('');
   const [shiftDate, setShiftDate] = useState('');
@@ -28,6 +29,9 @@ const ShiftLog = () => {
 
   return (
     <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <Modal
         animationType="slide"
         transparent={true}
@@ -275,6 +279,17 @@ const styles = StyleSheet.create({
   },
   choreText: {
     fontSize: 16,
+  },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
   }
 });
 

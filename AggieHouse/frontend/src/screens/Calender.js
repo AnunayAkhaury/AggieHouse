@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import { Calendar as RNCalendar } from 'react-native-calendars';
-const Calendar = () => {
+import { AntDesign } from '@expo/vector-icons';
+const Calendar = ({navigation}) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedShift, setSelectedShift] = useState(null);
   // Dummy data for upcoming shifts
@@ -36,6 +37,9 @@ const Calendar = () => {
   );
   return (
     <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <Text style={styles.title}>Volunteer Shift Schedule</Text>
       <RNCalendar
         style={styles.calendar}
@@ -170,5 +174,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+    }
 });
 export default Calendar;

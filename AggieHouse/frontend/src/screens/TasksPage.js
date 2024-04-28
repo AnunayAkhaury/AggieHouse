@@ -8,8 +8,9 @@ import {
   FlatList,
 } from 'react-native';
 import Task from '../components/Tasks';
+import { AntDesign } from '@expo/vector-icons';
 
-const TasksPage = () => {
+const TasksPage = ({navigation}) => {
   const [tasks, setTasks] = useState([
     { text: 'Build App', completed: false },
     { text: 'Impress Judges', completed: false },
@@ -34,6 +35,9 @@ const TasksPage = () => {
 
   return (
     <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
       <Text style={styles.title}>Tasks for {name} on {currentDate}</Text>
       <FlatList
         data={tasks}
@@ -121,6 +125,17 @@ const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     color: 'rgb(84, 84, 84)',
   },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+  }
 });
 
 export default TasksPage;

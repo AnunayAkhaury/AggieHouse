@@ -8,8 +8,9 @@ import {db} from '../../firebase';
 import { useRef } from 'react';
 import MessageList from '../components/MessageList';
 import ChatHeader from '../components/ChatHeader';
+import { AntDesign } from '@expo/vector-icons';
 let trimmedMessage = '';
-const ChatRoom = () => {
+const ChatRoom = ({navigation}) => {
     const route = useRoute();
     const OtherUserId  = route.params.chatId;
     const { user, loading } = useAuth();
@@ -74,6 +75,9 @@ const ChatRoom = () => {
 
     return (
       <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
         <ChatHeader />
           <View style={styles.header}>
               <Text style={styles.headerTitle}></Text>
@@ -127,5 +131,16 @@ const styles = StyleSheet.create({
   sendButtonText: {
       color: '#fff',
   },
+  backButton: {
+    alignSelf: 'start',
+    marginTop: 10,
+    marginLeft: 10,
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
+  }
 });
 export default ChatRoom;

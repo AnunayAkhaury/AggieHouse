@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, ActivityIndicator, StyleSheet, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -7,9 +7,11 @@ import ChatList from '../components/ChatList';
 import Loading from '../components/Loading';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import ChatHeader from '../components/ChatHeader';
+import { AntDesign } from '@expo/vector-icons';
 
 
-export default function ChatPage() {
+
+export default function ChatPage({ navigation}) {
     const [user, setUser] = useState();
     // Start with hardcoded data for testing
     const [users, setUsers] = useState([
@@ -55,6 +57,9 @@ export default function ChatPage() {
 
     return (
         <View style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <AntDesign name="arrowleft" size={24} color="black" />
+          </TouchableOpacity>
           <StatusBar style="light"/>
           <ChatHeader />
           {users.length > 0 ? (
@@ -78,4 +83,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    backButton: {
+        alignSelf: 'start',
+        marginTop: 10,
+        marginLeft: 10,
+        height: 50,
+        width: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        borderRadius: 25,
+      }
 });
