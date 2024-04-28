@@ -12,7 +12,7 @@ import AdminDashboard from './components/dashboard';
 export default function App() {
   return (
     <View style={tw`flex-1 bg-gray-100`}>
-      <Dashboard />
+      <Dashboard/>
 
     </View>
   );
