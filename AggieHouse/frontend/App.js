@@ -20,6 +20,7 @@ import ShiftLog from './src/screens/ShiftLog';
 import ProfileTab from './src/screens/ProfileTab';
 import EditProfilePage from './src/screens/EditProfile';
 import RedFeed from './src/screens/RedFeed';
+import Calendar from './src/screens/Calender';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
         <Stack.Screen  options={{ headerShown: false }}  name="ProfileTab" component={ProfileTab} />
         <Stack.Screen  options={{ headerShown: false }}  name="EditProfilePage" component={EditProfilePage} />
         <Stack.Screen  options={{ headerShown: false }}  name="RedFeed" component={RedFeed} />
+        <Stack.Screen  options={{ headerShown: false }}  name="Calendar" component={Calendar} />
 
 
        

@@ -18,6 +18,9 @@ const onTrainingClick = () => {
 const onShiftClick = () => {
   navigation.navigate('ShiftLog'); // Make sure 'Login' is the correct screen name in your navigator
 };
+const onCalenderClick = () => {
+  navigation.navigate('Calender'); // Make sure 'Login' is the correct screen name in your navigator
+};
 
   return (
     <View style={tw`flex-1 bg-gray-100`}>
@@ -67,6 +70,12 @@ const onShiftClick = () => {
           />
            <Button
             title="Shifts"
+            onPress={onShiftClick}
+            buttonStyle={tw`rounded-lg py-3 w-full mt-4 bg-gray-200`}
+            titleStyle={tw`text-black`}
+          />
+          <Button
+            title="Calender"
             onPress={onShiftClick}
             buttonStyle={tw`rounded-lg py-3 w-full mt-4 bg-gray-200`}
             titleStyle={tw`text-black`}
