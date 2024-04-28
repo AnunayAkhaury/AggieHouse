@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import StartPage from './components/StartPage';
+import TasksPage from './components/TasksPage';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <StartPage />
+      <TasksPage/>
     </View>
   );
 }
@@ -13,8 +14,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   text: {
     fontSize: 18, 
