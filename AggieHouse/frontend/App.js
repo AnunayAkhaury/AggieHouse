@@ -15,7 +15,11 @@ import CheckIn from './src/screens/CheckIn';
 import TasksPage from './src/screens/TasksPage';
 import ChatbotUI from './src/screens/ChatBotUI';
 import DashBoard from './src/screens/DashBoard';
-
+import TrainingPage from './src/screens/TrainingPage';
+import ShiftLog from './src/screens/ShiftLog';
+import ProfileTab from './src/screens/ProfileTab';
+import EditProfilePage from './src/screens/EditProfile';
+import RedFeed from './src/screens/RedFeed';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -32,6 +36,11 @@ export default function App() {
         <Stack.Screen  options={{ headerShown: false }}  name="TasksPage" component={TasksPage} />
         <Stack.Screen  options={{ headerShown: false }}  name="ChatbotUI" component={ChatbotUI} />
         <Stack.Screen  options={{ headerShown: false }}  name="DashBoard" component={DashBoard} />
+        <Stack.Screen  options={{ headerShown: false }}  name="TrainingPage" component={TrainingPage} />
+        <Stack.Screen  options={{ headerShown: false }}  name="ShiftLog" component={ShiftLog} />
+        <Stack.Screen  options={{ headerShown: false }}  name="ProfileTab" component={ProfileTab} />
+        <Stack.Screen  options={{ headerShown: false }}  name="EditProfilePage" component={EditProfilePage} />
+        <Stack.Screen  options={{ headerShown: false }}  name="RedFeed" component={RedFeed} />
 
 
        

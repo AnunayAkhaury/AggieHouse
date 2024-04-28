@@ -33,10 +33,6 @@ const StartPage = ({ navigation }) => {
     );
 };
 
-const onSignUpClick = () => {
-    // Action
-}
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
