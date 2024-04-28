@@ -50,72 +50,57 @@ const EditProfilePage = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'rgb(220, 204, 192)',
-    justifyContent: 'flex-start', // Align content at the top
-    alignItems: 'center',
-    paddingTop: 60, // Add padding to the top
-  },
-  divider: {
-    width: '100%',
-    borderBottomWidth: 0.5,
-    borderBottomColor: 'black',
-  },
-  editProfileText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  profilePicture: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'rgba(149, 69, 53, 0.7)',
-    justifyContent: 'center', // Center content vertically
-    alignItems: 'center',
-    borderRadius: 50,
-    marginTop: 13,
-    marginBottom: 10,
-  },
-  editPictureText: {
-    fontSize: 16,
-    color: '#954535', 
-    marginBottom: 20,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '94%',
-    marginBottom: 5,
-    marginTop: 20,
-    marginRight: 10,
-  },
-  inputLabel: {
-    width: '20%',
-    marginLeft: 7,
-  },
-  input: {
-    flex: 1,
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-  },
-  saveButton: {
-    backgroundColor: '#954535',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 18,
-    marginTop: 30,
-    borderColor: 'white',
-    borderWidth: 1,
-  },
-  saveButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  //848484
+    container: {
+        flex: 1,
+        backgroundColor: 'rgb(220, 204, 192)',
+        justifyContent: 'flex-start', // Align content at the top
+        alignItems: 'center',
+        paddingTop: 60, // Add padding to the top
+    },
+
+    divider: {
+        width: '100%',
+        borderBottomWidth: 0.5,
+        borderBottomColor: 'black',
+    },
+
+    editProfileText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      marginBottom: 20,
+    },
+
+    profilePicture: {
+      width: 100,
+      height: 100,
+      backgroundColor: 'lightgray',
+      borderRadius: 50,
+      marginTop:13,
+      marginBottom:10,
+
+    },
+    editPictureText: {
+      fontSize: 16,
+      color: '#007AFF', // Blue color
+      marginBottom:20,
+    },
+
+    input: {
+        width: '95%',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        borderRadius: 5,
+        marginTop: 18,
+        marginBottom: 10,
+        paddingHorizontal: 10,
+      },
+
+      picker: {
+        width: '80%',
+        height: 40,
+        marginBottom: 20,
+      },
 
 });
 
