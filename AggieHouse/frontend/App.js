@@ -1,24 +1,23 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import EditProfilePage from './components/EditProfilePage.js';
-import CheckIn from './components/CheckIn.js';
-import Feedback from './components/Feedback.js';
-import ResidentFeedbackForm from './components/ResidentFeedbackForm.js';
-
-
-
-
+import Tabs from './components/Tabs'; // Assuming Tabs is a navigator
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <CheckIn/> 
-    </View>
+    <SafeAreaView style={styles.container}>
+      <NavigationContainer>
+        <StatusBar barStyle="dark-content" />
+        <Tabs />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'rgb(220, 204, 192)', // Change this to the background color of your choice
   },
 });
