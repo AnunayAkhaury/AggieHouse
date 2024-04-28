@@ -7,7 +7,6 @@ const FeedbackScreen = () => {
   const [rating, setRating] = useState(null);
   const [isAlertVisible, setAlertVisible] = useState(false);
 
-
   const submitFeedback = () => {
     setAlertVisible(true); 
   };
@@ -32,9 +31,6 @@ const FeedbackScreen = () => {
           </View>
         </View>
       </Modal>
-
-
-
 
       <View style={styles.imageContainer}>
         <Image
@@ -85,17 +81,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: 'rgb(220, 204, 192)',
-    justifyContent: 'center', // Center content vertically
+    justifyContent: 'flex-start', // Changed from 'center' to 'flex-start'
   },
-
-// Modal Styles
-centeredView: {
+  centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22
-    },
-    modalView: {
+  },
+  modalView: {
     margin: 20,
     backgroundColor: 'rgb(220, 204, 192)',
     borderRadius: 20,
@@ -103,31 +97,30 @@ centeredView: {
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
-        width: 0,
-        height: 2
+      width: 0,
+      height: 2
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5
-    },
-    modalText: {
+  },
+  modalText: {
     marginBottom: 15,
     textAlign: "center"
-    },
-    buttonClose: {
+  },
+  buttonClose: {
     backgroundColor: '#954535',
     borderRadius: 30,
     padding: 15,
     elevation: 2
-    },
-    textStyle: {
+  },
+  textStyle: {
     color: "white",
     fontWeight: "bold",
     textAlign: "center"
-    },
-
+  },
   headerContainer: {
-    marginBottom: 20,
+    marginBottom: 10, // Reduced space between image and header
     alignItems: 'center',
   },
   header: {
@@ -137,13 +130,14 @@ centeredView: {
   },
   imageContainer: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 5, // Reduced marginBottom to bring it closer to the header
   },
   image: {
     width: 200,
     height: 200,
     borderRadius: 100,
     overflow: 'hidden',
+    marginTop: 40,
   },
   label: {
     fontSize: 16,
@@ -192,9 +186,7 @@ centeredView: {
     color: 'grey',
     textAlign: 'center',
     marginTop: 20,
-  },
-
-  
+  }
 });
 
 export default FeedbackScreen;

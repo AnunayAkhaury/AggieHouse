@@ -9,6 +9,7 @@ import Feedback from './components/Feedback.js';
 export default function App() {
   return (
     <View style={styles.container}>
+      <Feedback/>
 
     </View>
   );
