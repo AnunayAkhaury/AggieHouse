@@ -1,35 +1,66 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# Dependencies
 node_modules/
+
+# Build generated files
+ios/build/
+android/build/
+android/.gradle/
+android/app/build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Keystores
+*.jks
+*.keystore
+*.p12
 
 # Expo
 .expo/
-dist/
 web-build/
 
-# Native
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
+# Misc
+*.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
 
-# Metro
-.metro-health-check*
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/.env
 
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
-# macOS
-.DS_Store
-*.pem
+# babel
+babel.config.js
 
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
+# Metro bundler
+metro.config.js

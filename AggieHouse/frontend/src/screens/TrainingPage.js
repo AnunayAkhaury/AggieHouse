@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View, StyleSheet } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { AntDesign } from '@expo/vector-icons';
 
